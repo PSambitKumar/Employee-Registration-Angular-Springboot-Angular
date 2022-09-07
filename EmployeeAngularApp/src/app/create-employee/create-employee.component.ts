@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Employee} from "../model/employee";
 import {EmployeeService} from "../service/employee.service";
 import {Router} from "@angular/router";
+import {Response} from "../model/response";
 
 @Component({
   selector: 'app-create-employee',
@@ -13,6 +14,7 @@ export class CreateEmployeeComponent implements OnInit {
   empId : any;
   employee : Employee = new Employee();
   formEmployeeData : Employee = new Employee();
+  response : Response = new Response();
 
   constructor(private employeeService : EmployeeService, private router : Router, ) { }
 
@@ -69,6 +71,15 @@ export class CreateEmployeeComponent implements OnInit {
       this.formEmployeeData.empDOB = this.employee.empDOB
       // alert("--------------------->" + this.employee.empFullName);
     })
+  }
+
+  createUsers(){
+    this.employeeService.createUsers().subscribe(data=>{
+      console.log(data);
+    },
+      error =>{
+        console.log(error);
+      })
   }
 
 
