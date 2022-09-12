@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Management</title>
+</head>
+<body>
+
+<div class="card" style="margin-top: 2rem;">
+  <div class="card-header">
+    <h3>Student Management System</h3>
+  </div>
+
+  <div class="card-body">
+    <div id="add">
+      <fieldset style="margin: 2rem;" class="form-group border p-3">
+        <legend class="w-auto px-2">Student Details</legend>
+        <form (ngSubmit)="studentForm()" style="margin-top: 2rem; width: 99%"id="farmerForm">
+          <div class="container">
+
+            <div class="row farmerDetails">
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="name" class="form-label">Student Name</label>
+                  <input type="text"  class="form-control" id="name" name="name" placeholder="Enter Your Name">
+                  <div id="nameAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="fathersName" class="form-label">Father's Name</label>
+                  <input type="text" class="form-control" id="fathersName" name="fathersName" placeholder="Enter Fathers Name">
+                  <div id="fathersNameAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="age" class="form-label">Age</label>
+                  <input  type="number" maxlength="2" class="form-control" id="age" name="age" placeholder="Enter Your Age">
+                  <div id="ageAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label class="form-label">Gender</label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio">
+                      <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input  class="form-check-input" type="radio" >
+                      <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div id="genderAlert" class="custom-alert"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 2rem;">
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="relation" class="form-label">Relation</label>
+                  <select class="custom-select my-1 mr-sm-2 form-control"  aria-label="Default select example" id="relation" name="relation">
+                    <option selected value="Self">Self</option>
+                  </select>
+                  <div id="relationAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="accountNumber" class="form-label">Account Number</label>
+                  <input  type="text" class="form-control" id="accountNumber" name="accountNumber" placeholder="Enter Your Account Number">
+                  <div id="accountNumberAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="ifscCode" class="form-label">IFSC Code</label>
+                  <input type="text"  class="form-control" id="ifscCode" name="ifscCode" placeholder="Enter IFSC Code">
+                  <div id="ifscAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="bankName" class="form-label">Bank Name</label>
+                  <input  type="text"  class="form-control" id="bankName" name="bankName" placeholder="Enter Bank Name" required>
+                  <div id="bankAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 2rem;">
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="mobile" class="form-label">Mobile Number</label>
+                  <input type="text"  maxlength="10" class="form-control" id="mobile"  name="mobile" placeholder="Enter Mobile Number">
+                  <div id="mobileAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                </div>
+              </div>
+              
+              <div class="col-sm">
+                <div class="col-md-12">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div style="margin-top: 2rem;" class="container">
+
+            <div class="row buttonClass">
+
+              <div class="col-sm">
+                <div class="col-md-12 text-center">
+                  <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
+                  <button id="btnReset" class="btn btn-warning" type="reset" style="margin-left: 1rem">Reset</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    <h5>By : Sambit Kumar Pradhan</h5>
+  </div>
+
+</div>
+</body>
+</html>
+
