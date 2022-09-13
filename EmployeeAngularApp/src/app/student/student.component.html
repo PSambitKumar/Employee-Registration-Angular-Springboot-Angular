@@ -17,7 +17,7 @@
     <div id="add">
       <fieldset style="margin: 2rem;" class="form-group border p-3">
         <legend class="w-auto px-2">Student Details</legend>
-        <form (ngSubmit)="studentForm()" style="margin-top: 2rem; width: 99%"id="farmerForm">
+        <form (ngSubmit)="studentForm()" [formGroup]="studentFormGroup" style="margin-top: 2rem; width: 99%"id="farmerForm">
           <div class="container">
 
             <div class="row farmerDetails">
@@ -25,7 +25,25 @@
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="name" class="form-label">Student Name</label>
-                  <input type="text"  class="form-control" id="name" name="name" placeholder="Enter Your Name">
+                  <input  type="text" formControlName="name" class="form-control" id="name" placeholder="Enter Your Name">
+
+                  <div class="form-text" style="color: red" *ngIf="name.errors?.['required'] && (name.touched || name.dirty)">
+                    *Name Required
+                  </div>
+
+                  <div class="form-text" style="color: red"*ngIf="name.errors?.['minlength'] && (name.touched || name.touched)">
+                    *Name should be minimum 3 characters
+                  </div>
+
+                  <div class="form-text" style="color: red"*ngIf="name.errors?.['maxlength'] && (name.touched || name.dirty)">
+                    *Name should be maximum 20 characters
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
+                    *Not a valid name
+                  </div>
+
+
                   <div id="nameAlert" class="custom-alert"></div>
                 </div>
               </div>
@@ -112,14 +130,48 @@
 
               <div class="col-sm">
                 <div class="col-md-12">
+                  <label for="mobile" class="form-label">Password</label>
+                  <input type="password" class="form-control" formControlName="password" id="password"  name="password" placeholder="Enter Password">
+                  <div id="passAlert" class="custom-alert"></div>
+
+                  <div class="form-text" style="color: red" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
+                    *Password Required
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="password.errors?.['minlength'] && (password.touched || password.dirty)">
+                    *Password should be minimum 8 characters
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="password.errors?.['pattern'] && (password.touched || password.dirty)">
+                    *Password should contain atleast one uppercase, one lowercase, one number and one special character
+                  </div>
                 </div>
               </div>
 
               <div class="col-sm">
                 <div class="col-md-12">
+                  <label for="mobile" class="form-label">Confirm Password</label>
+                  <input type="password"  formControlName="confirmPassword" (keyup)="passwordMatchValidator()" class="form-control" id="confirmPassword"  name="confirmPassword" placeholder="Enter Confirm Password">
+                  <div id="conPassAlert" class="custom-alert"></div>
+
+                  <div class="form-text" style="color: red" *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty)">
+                    *Password Required
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="confirmPassword.errors?.['minlength'] && (confirmPassword.touched || confirmPassword.dirty)">
+                    *Password should be minimum 8 characters
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="confirmPassword.errors?.['pattern'] && (confirmPassword.touched || confirmPassword.dirty)">
+                    *Password should contain atleast one uppercase, one lowercase, one number and one special character
+                  </div>
+
+                  <div class="form-text" style="color: red" *ngIf="!passwordMatch && (confirmPassword.touched || confirmPassword.dirty)">
+                    *Password and Confirm Password should be same
+                  </div>
                 </div>
               </div>
-              
+
               <div class="col-sm">
                 <div class="col-md-12">
                 </div>
@@ -136,6 +188,7 @@
               <div class="col-sm">
                 <div class="col-md-12 text-center">
                   <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
+<!--                  [disabled]="studentFormGroup.invalid"-->
                   <button id="btnReset" class="btn btn-warning" type="reset" style="margin-left: 1rem">Reset</button>
                 </div>
               </div>
