@@ -25,6 +25,7 @@ export class StudentComponent implements OnInit {
     accountNumber : new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
     ifscCode : new FormControl("", [Validators.required, Validators.pattern("^[A-Z]{4}0[A-Z0-9]{6}$")]),
     bankName : new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
+    mobile : new FormControl("", [Validators.required, Validators.pattern("^[6-9][0-9]{9}$")]),
     password : new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?])[A-Za-z\\d#$@!%&*?]{8,30}$")]),
     confirmPassword : new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?])[A-Za-z\\d#$@!%&*?]{8,30}$")])
   })
@@ -50,6 +51,7 @@ export class StudentComponent implements OnInit {
   get accountNumber() : FormControl{return this.studentFormGroup.get("accountNumber") as FormControl;}
   get ifscCode() : FormControl{return this.studentFormGroup.get("ifscCode") as FormControl;}
   get bankName() : FormControl{return this.studentFormGroup.get("bankName") as FormControl;}
+  get mobile() : FormControl{return this.studentFormGroup.get("mobile") as FormControl;}
   get password() : FormControl{return this.studentFormGroup.get("password") as FormControl;}
   get confirmPassword() : FormControl{return this.studentFormGroup.get("confirmPassword") as FormControl;}
 

@@ -153,8 +153,14 @@
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="mobile" class="form-label">Mobile Number</label>
-                  <input type="text"  maxlength="10" class="form-control" id="mobile"  name="mobile" placeholder="Enter Mobile Number">
+                  <input type="text"  maxlength="10" class="form-control" id="mobile"  name="mobile" formControlName="mobile" placeholder="Enter Mobile Number">
                   <div id="mobileAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+                    <div *ngIf="mobile.errors?.['required']">*Mobile Number Required</div>
+                    <div *ngIf="mobile.errors?.['pattern']">*Not a valid Mobile Number</div>
+                  </div>
+
                 </div>
               </div>
 
