@@ -84,10 +84,6 @@
                     </div>
                     <div id="genderAlert" class="custom-alert"></div>
 
-                    <div  class="form-text" style="color: red"  *ngIf="gender.invalid && (gender.dirty || gender.touched)">
-                      <div *ngIf="gender.errors?.['required']">*Gender Required</div>
-                    </div>
-
                   </div>
                 </div>
               </div>
@@ -97,34 +93,57 @@
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="relation" class="form-label">Relation</label>
-                  <select class="custom-select my-1 mr-sm-2 form-control"  aria-label="Default select example" id="relation" name="relation">
+                  <select class="custom-select my-1 mr-sm-2 form-control"  aria-label="Default select example" formControlName="relation" id="relation" name="relation">
                     <option selected value="Self">Self</option>
                   </select>
                   <div id="relationAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="relation.invalid && (age.dirty || age.touched)">
+                    <div *ngIf="relation.errors?.['required']">*Relation Must Select</div>
+                  </div>
+
                 </div>
               </div>
 
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="accountNumber" class="form-label">Account Number</label>
-                  <input  type="text" class="form-control" id="accountNumber" name="accountNumber" placeholder="Enter Your Account Number">
+                  <input  type="text" class="form-control" id="accountNumber" name="accountNumber" formControlName="accountNumber" placeholder="Enter Your Account Number">
                   <div id="accountNumberAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="accountNumber.invalid && (accountNumber.dirty || accountNumber.touched)">
+                    <div *ngIf="accountNumber.errors?.['required']">*Account Number Required</div>
+                    <div *ngIf="accountNumber.errors?.['pattern']">*Not a valid Account Number</div>
+                  </div>
+
                 </div>
               </div>
 
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="ifscCode" class="form-label">IFSC Code</label>
-                  <input type="text"  class="form-control" id="ifscCode" name="ifscCode" placeholder="Enter IFSC Code">
+                  <input type="text"  class="form-control" id="ifscCode" name="ifscCode" formControlName="ifscCode" placeholder="Enter IFSC Code">
                   <div id="ifscAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="ifscCode.invalid && (ifscCode.dirty || ifscCode.touched)">
+                    <div *ngIf="ifscCode.errors?.['required']">*IFSC Code Required</div>
+                    <div *ngIf="ifscCode.errors?.['pattern']">*Not a valid IFSC Code</div>
+                  </div>
+
                 </div>
               </div>
 
               <div class="col-sm">
                 <div class="col-md-12">
                   <label for="bankName" class="form-label">Bank Name</label>
-                  <input  type="text"  class="form-control" id="bankName" name="bankName" placeholder="Enter Bank Name" required>
+                  <input  type="text"  class="form-control" id="bankName" name="bankName" formControlName="bankName" placeholder="Enter Bank Name" required>
                   <div id="bankAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="bankName.invalid && (bankName.dirty || bankName.touched)">
+                    <div *ngIf="bankName.errors?.['required']">*Bank Name Required</div>
+                    <div *ngIf="bankName.errors?.['pattern']">*Not a valid Bank Name</div>
+                  </div>
+
                 </div>
               </div>
 

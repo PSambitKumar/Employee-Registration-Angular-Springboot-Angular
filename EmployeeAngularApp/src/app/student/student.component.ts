@@ -21,7 +21,10 @@ export class StudentComponent implements OnInit {
     name : new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
     fatherName : new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
     age : new FormControl("", [Validators.required, Validators.min(5), Validators.max(60), Validators.pattern("^[0-9]*$")]),
-    gender : new FormControl("", [Validators.required]),
+    relation : new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
+    accountNumber : new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
+    ifscCode : new FormControl("", [Validators.required, Validators.pattern("^[A-Z]{4}0[A-Z0-9]{6}$")]),
+    bankName : new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
     password : new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?])[A-Za-z\\d#$@!%&*?]{8,30}$")]),
     confirmPassword : new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?])[A-Za-z\\d#$@!%&*?]{8,30}$")])
   })
@@ -43,7 +46,10 @@ export class StudentComponent implements OnInit {
   get name() : FormControl{return this.studentFormGroup.get("name") as FormControl;}
   get fatherName() : FormControl{return this.studentFormGroup.get("fatherName") as FormControl;}
   get age() : FormControl{return this.studentFormGroup.get("age") as FormControl;}
-  get gender() : FormControl{return this.studentFormGroup.get("gender") as FormControl;}
+  get relation() : FormControl{return this.studentFormGroup.get("relation") as FormControl;}
+  get accountNumber() : FormControl{return this.studentFormGroup.get("accountNumber") as FormControl;}
+  get ifscCode() : FormControl{return this.studentFormGroup.get("ifscCode") as FormControl;}
+  get bankName() : FormControl{return this.studentFormGroup.get("bankName") as FormControl;}
   get password() : FormControl{return this.studentFormGroup.get("password") as FormControl;}
   get confirmPassword() : FormControl{return this.studentFormGroup.get("confirmPassword") as FormControl;}
 
