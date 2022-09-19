@@ -197,6 +197,9 @@
 
               <div class="col-sm">
                 <div class="col-md-12">
+                  <label for="studentName" class="form-label">Confirm Password</label>
+                  <input type="text"  formControlName="studentName" class="form-control" id="studentName" [value]="studentName"  name="studentName" >
+                  <div id="studentNameAlert" class="custom-alert"></div>
                 </div>
               </div>
 
@@ -210,8 +213,11 @@
 
               <div class="col-sm">
                 <div class="col-md-12 text-center">
+                  <div *ngIf="updateStudent">
+                    <button id="btnUpdate" class="btn btn-primary" type="submit">Update</button>
+                  </div>
                   <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
-<!--                  [disabled]="studentFormGroup.invalid"-->
+                  <!--                  [disabled]="studentFormGroup.invalid"-->
                   <button id="btnReset" class="btn btn-warning" type="reset" style="margin-left: 1rem">Reset</button>
                 </div>
               </div>

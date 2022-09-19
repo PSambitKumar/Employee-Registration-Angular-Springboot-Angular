@@ -3,6 +3,7 @@ import {Employee} from "../model/employee";
 import {EmployeeService} from "../service/employee.service";
 import {Router} from "@angular/router";
 import {Response} from "../model/response";
+import {error} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-create-employee',
@@ -74,13 +75,18 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   createUsers(){
-    this.employeeService.createUsers().subscribe(data=>{
-      console.log(data);
+    this.employeeService.createUsers().subscribe(success=>{
+      console.log(success);
     },
-      error =>{
-        console.log(error);
-      })
+      error => {
+      const err = JSON.parse(JSON.stringify(error));//Converting error object to JSON
+      const errMessage = err.error.message;//Getting error message from error object
+      console.log(err);
+      console.log(err.status);
+      console.log(errMessage);
+      if ((JSON.parse(JSON.stringify(error)).status) == 409 && (JSON.parse(JSON.stringify(error)).error.message) == "Email Already Exists"){
+        alert(errMessage);
+      }
+      });
   }
-
-
 }

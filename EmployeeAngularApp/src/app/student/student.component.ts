@@ -11,6 +11,8 @@ import {EmployeeService} from "../service/employee.service";
 export class StudentComponent implements OnInit {
   student : Student = new Student();
   passwordMatch : boolean = false;
+  updateStudent : any = false;
+  studentName : any = "Sambit";
 
   constructor(private employeeService : EmployeeService) { }
 

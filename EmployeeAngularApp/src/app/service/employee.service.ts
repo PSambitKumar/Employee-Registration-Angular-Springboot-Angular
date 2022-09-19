@@ -49,20 +49,16 @@ export class EmployeeService {
 
 
   // For Dilip Kumar Suna Project
-  createUsers(): Observable<Response> {
+  createUsers(): Observable<any> {
     const data = {
       "name": "Sambit",
       "mobile": 700809591,
       "organization": "CSM",
-      "email": "sambit@gmail.com",
+      "email": "niti@gmail.com",
       "password": "sambit@123",
-      "created_by": 2,
-      "updated_by": 2,
-      "created_on": "2088-12-28",
-      "updated_on": "2088-12-29"
     };
     const config = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
-    return this.httpClient.post<Response>(`${this.baseUrl1}`, data, config);
+    return this.httpClient.post<any>(`${this.baseUrl1}`, data, config);
   }
 
   saveStudent(id: any): Observable<any> {
