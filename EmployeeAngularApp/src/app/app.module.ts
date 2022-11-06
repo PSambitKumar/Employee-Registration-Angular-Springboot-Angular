@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StudentComponent } from './student/student.component';
+import { ValidationComponent } from './validation/validation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     CreateEmployeeComponent,
-    StudentComponent
+    StudentComponent,
+    ValidationComponent,
   ],
     imports: [
         BrowserModule,

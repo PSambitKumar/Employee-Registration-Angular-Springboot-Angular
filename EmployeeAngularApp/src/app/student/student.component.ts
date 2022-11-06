@@ -13,6 +13,7 @@ export class StudentComponent implements OnInit {
   passwordMatch : boolean = false;
   updateStudent : any = false;
   studentName : any = "Sambit";
+  changeText : boolean = false;
 
   constructor(private employeeService : EmployeeService) { }
 

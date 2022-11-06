@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Management</title>
+</head>
+<body style="font-family: 'Segoe UI Semibold'">
+
+<div class="card" style="margin-top: 2rem;">
+  <div class="card-header">
+    <h3>Student Management System</h3>
+  </div>
+
+  <div class="card-body">
+    <div id="add">
+      <fieldset style="margin: 2rem;" class="form-group border p-3">
+        <legend class="w-auto px-2">Student Details</legend>
+        <form (ngSubmit)="studentForm()" [formGroup]="studentFormGroup" style="margin-top: 2rem; width: 99%"id="farmerForm">
+          <div class="container">
+            <div class="row" style="margin-top: 2rem;">
+              <div class="col-sm">
+                <div class="col-md-3">
+                  <div class="mb-3 iconinput input-effect">
+
+                    <label>Name</label>
+                    <input type="tel" class="form-control effect-16" formControlName="name" autocomplete="off" [ngClass]="{'is-invalid': submitted &&  f['name'].errors}">
+                    <i class="hricon-mobile"></i>
+                    <span class="focus-border"></span>
+                    <div class="info-tooltip invalid-feedback" (mouseover)="changeText=true" (mouseout)="changeText=false"></div>
+                    <div class="info-tooltip content" *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" >
+                      <div *ngIf="f['name'].errors?.['required']">*Name Required</div>
+                      <div *ngIf="f['name'].errors?.['minlength']">*Name should be minimum 5 characters</div>
+                      <div *ngIf="f['name'].errors?.['maxlength']">*Name should be maximum 20 characters</div>
+                      <div *ngIf="f['name'].errors?.['pattern']">*Not a valid name</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;" class="container">
+
+            <div class="row buttonClass">
+
+              <div class="col-sm">
+                <div class="col-md-12 text-center">
+                  <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
+                  <button id="btnReset" class="btn btn-warning" type="reset" style="margin-left: 1rem">Reset</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    <h5>By : Sambit Kumar Pradhan</h5>
+  </div>
+
+</div>
+</body>
+</html>
+

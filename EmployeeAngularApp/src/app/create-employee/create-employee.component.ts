@@ -3,7 +3,7 @@ import {Employee} from "../model/employee";
 import {EmployeeService} from "../service/employee.service";
 import {Router} from "@angular/router";
 import {Response} from "../model/response";
-import {error} from "@angular/compiler/src/util";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create-employee',
@@ -52,6 +52,9 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   onSubmitCreateEmployee(){
+    let address = $('#empAddress').val();
+    alert(address);
+
     const obj = JSON.stringify(this.formEmployeeData);
     this.employee.empFullName = this.formEmployeeData.empFullName;
     this.employee.empEmail = this.formEmployeeData.empEmail;

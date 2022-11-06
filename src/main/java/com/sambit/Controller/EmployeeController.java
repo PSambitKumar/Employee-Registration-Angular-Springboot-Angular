@@ -89,4 +89,12 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(value = "/saveStudent")
+    public String saveStudent(@RequestParam(value = "id", required = false)int id){
+        System.out.println("Inside Save Student Method.");
+        System.out.println("ID is : " + id);
+        String name = "Sambit";
+        return null;
+    }
+
 }
