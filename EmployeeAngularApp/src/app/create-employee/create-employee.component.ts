@@ -4,6 +4,7 @@ import {EmployeeService} from "../service/employee.service";
 import {Router} from "@angular/router";
 import {Response} from "../model/response";
 import * as $ from 'jquery';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-employee',
@@ -16,6 +17,7 @@ export class CreateEmployeeComponent implements OnInit {
   employee : Employee = new Employee();
   formEmployeeData : Employee = new Employee();
   response : Response = new Response();
+  dateArray : any = [];
 
   constructor(private employeeService : EmployeeService, private router : Router, ) { }
 
@@ -34,6 +36,63 @@ export class CreateEmployeeComponent implements OnInit {
 
   viewEmployeeList(){
     this.router.navigate(["viewEmployees"]);
+  }
+  getDate(event : any){
+
+    // Some Other Operations For Testing and Learning
+    alert("Selected Date is : " + event.target.value);
+    // Using of Date Pipe
+    let datePipe = new DatePipe("en-US");
+    let date = datePipe.transform(event.target.value, "dd/MM/yyyy");
+    alert("Updated Date : " + date);
+    let day = datePipe.transform(event.target.value, "dd");//Getting Day
+    let month = datePipe.transform(event.target.value, "MM");//Getting Month
+    let year = datePipe.transform(event.target.value, "yyyy");//Getting Year
+    alert("Day : " + day + " Month : " + month + " Year : " + year);
+    // Increase Date By 1 For 7 Times
+    for (let i = 0; i < 7; i++){
+      let date = new Date(event.target.value);
+      date.setDate(date.getDate() + i);
+      let newDate = datePipe.transform(date, "dd-MM-yyyy");
+      this.dateArray.push(newDate);
+    }
+    alert("Date Array : " + this.dateArray);
+    console.log("Date Array : " + this.dateArray);
+
+
+    // In Date Format 1
+    // alert("Selected Date : " + new Date(event.target.value));
+    // let newDate = new Date(new Date(event.target.value).getTime() - 6 * 24 * 60 * 60 * 1000);
+    // alert("Date Less Than 6 : " + newDate);
+
+
+    // In String Format 1
+    // let date = "2022-11-07";
+    // alert("Date : " + date);
+    // for (let i = 0; i < 6; i++) {
+    //   let newDate = new Date(date);
+    //   newDate.setDate(newDate.getDate() - i);
+    //   let newDate1 = newDate.getFullYear() + '-' + String(newDate.getMonth() + 1).padStart(2, '0') + '-' + String(newDate.getDate()).padStart(2, '0');
+    //   this.dateArray.push(newDate1);
+    // }
+    //
+    // this.dateArray.forEach((data : any) => {
+    //   console.log(data);
+    // })
+    // console.log(this.dateArray);
+
+
+    // In String Format 2
+    // let date = "2022-11-07";
+    // alert("Date : " + date);
+    // for (let i = 1; i <= 6; i++) {
+    //   let newDate = new Date(date);
+    //   newDate.setDate(newDate.getDate() - i);
+    //   this.dateArray.push(newDate);
+    // }
+    // console.log(this.dateArray);
+
+
   }
 
   saveEmployee(){
