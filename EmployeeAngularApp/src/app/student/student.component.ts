@@ -62,5 +62,13 @@ export class StudentComponent implements OnInit {
   passwordMatchValidator() {
     this.passwordMatch = this.password.value === this.confirmPassword.value;
   }
+
+  getTaggedHospital(){
+    // alert("Inside Get Tagged Hospital");
+    this.employeeService.getTaggedHospital().subscribe(data=>{
+      console.log("Data Received.");
+      console.log(data);
+    })
+  }
   }
 
