@@ -1,0 +1,259 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Management</title>
+</head>
+<body style="font-family: 'Segoe UI Semibold'">
+
+<div class="card" style="margin-top: 2rem;">
+  <div class="card-header">
+    <h3>Student Management System</h3>
+  </div>
+
+  <div class="card-body">
+    <div id="add">
+      <fieldset style="margin: 2rem;" class="form-group border p-3">
+        <legend class="w-auto px-2">Student Details</legend>
+        <form (ngSubmit)="studentForm()" [formGroup]="studentFormGroup" style="margin-top: 2rem; width: 99%"id="farmerForm">
+          <div class="container">
+
+            <div class="row farmerDetails">
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="name" class="form-label">Student Name</label>
+                  <input  type="text" formControlName="name" class="form-control" id="name" placeholder="Enter Your Name">
+
+                  <div  class="form-text" style="color: red"  *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors?.['required']">*Name Required</div>
+                    <div *ngIf="name.errors?.['minlength']">*Name should be minimum 3 characters</div>
+                    <div *ngIf="name.errors?.['maxlength']">*Name should be maximum 20 characters</div>
+                    <div *ngIf="name.errors?.['pattern']">*Not a valid name</div>
+                  </div>
+
+                  <div id="nameAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="fathersName" class="form-label">Father's Name</label>
+                  <input type="text" class="form-control" id="fathersName" name="fathersName" formControlName="fatherName" placeholder="Enter Fathers Name">
+                  <div id="fathersNameAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="fatherName.invalid && (fatherName.dirty || name.touched)">
+                    <div *ngIf="fatherName.errors?.['required']">*Father Name Required</div>
+                    <div *ngIf="fatherName.errors?.['minlength']">*Father Name should be minimum 3 characters</div>
+                    <div *ngIf="fatherName.errors?.['maxlength']">*Father should be maximum 20 characters</div>
+                    <div *ngIf="fatherName.errors?.['pattern']">*Not a valid name</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="age" class="form-label">Age</label>
+                  <input  type="number" maxlength="2" class="form-control" id="age" formControlName="age" name="age" placeholder="Enter Your Age">
+                  <div id="ageAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="age.invalid && (age.dirty || age.touched)">
+                    <div *ngIf="age.errors?.['required']">*Age Required</div>
+                    <div *ngIf="age.errors?.['min']">*Age Must be Grater Than 5 Years</div>
+                    <div *ngIf="age.errors?.['max']">*Age Must be less Than 60 Years</div>
+                    <div *ngIf="age.errors?.['pattern']">*Age Must Contains Number Only!</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label class="form-label">Gender</label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" formControlName="gender">
+                      <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input  class="form-check-input" type="radio" name="gender" formControlName="gender">
+                      <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div id="genderAlert" class="custom-alert"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 2rem;">
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="relation" class="form-label">Relation</label>
+                  <select class="custom-select my-1 mr-sm-2 form-control"  aria-label="Default select example" formControlName="relation" id="relation" name="relation">
+                    <option selected value="Self">Self</option>
+                  </select>
+                  <div id="relationAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="relation.invalid && (age.dirty || age.touched)">
+                    <div *ngIf="relation.errors?.['required']">*Relation Must Select</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="accountNumber" class="form-label">Account Number</label>
+                  <input  type="text" class="form-control" id="accountNumber" name="accountNumber" formControlName="accountNumber" placeholder="Enter Your Account Number">
+                  <div id="accountNumberAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="accountNumber.invalid && (accountNumber.dirty || accountNumber.touched)">
+                    <div *ngIf="accountNumber.errors?.['required']">*Account Number Required</div>
+                    <div *ngIf="accountNumber.errors?.['pattern']">*Not a valid Account Number</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="ifscCode" class="form-label">IFSC Code</label>
+                  <input type="text"  class="form-control" id="ifscCode" name="ifscCode" formControlName="ifscCode" placeholder="Enter IFSC Code">
+                  <div id="ifscAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="ifscCode.invalid && (ifscCode.dirty || ifscCode.touched)">
+                    <div *ngIf="ifscCode.errors?.['required']">*IFSC Code Required</div>
+                    <div *ngIf="ifscCode.errors?.['pattern']">*Not a valid IFSC Code</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="bankName" class="form-label">Bank Name</label>
+                  <input  type="text"  class="form-control" id="bankName" name="bankName" formControlName="bankName" placeholder="Enter Bank Name" required>
+                  <div id="bankAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="bankName.invalid && (bankName.dirty || bankName.touched)">
+                    <div *ngIf="bankName.errors?.['required']">*Bank Name Required</div>
+                    <div *ngIf="bankName.errors?.['pattern']">*Not a valid Bank Name</div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 2rem;">
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="mobile" class="form-label">Mobile Number</label>
+                  <input type="text"  maxlength="10" class="form-control" id="mobile"  name="mobile" formControlName="mobile" placeholder="Enter Mobile Number">
+                  <div id="mobileAlert" class="custom-alert"></div>
+
+                  <div  class="form-text" style="color: red"  *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+                    <div *ngIf="mobile.errors?.['required']">*Mobile Number Required</div>
+                    <div *ngIf="mobile.errors?.['pattern']">*Not a valid Mobile Number</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="mobile" class="form-label">Password</label>
+                  <input type="password" class="form-control" formControlName="password" id="password"  name="password" placeholder="Enter Password">
+                  <div id="passAlert" class="custom-alert"></div>
+
+                  <div class="form-text" style="color: red"  *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div  *ngIf="password.errors?.['required']">*Password Required</div>
+                    <div  *ngIf="password.errors?.['minlength']">*Password should be minimum 8 characters</div>
+                    <div  *ngIf="password.errors?.['pattern']">*Password should contain atleast one uppercase, one lowercase, one number and one special character</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="mobile" class="form-label">Confirm Password</label>
+                  <input type="password"  formControlName="confirmPassword" (keyup)="passwordMatchValidator()" class="form-control" id="confirmPassword"  name="confirmPassword" placeholder="Enter Confirm Password">
+                  <div id="conPassAlert" class="custom-alert"></div>
+
+                  <div class="form-text" style="color: red" *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)">
+                    <div *ngIf="confirmPassword.errors?.['required']">*Password Required</div>
+                    <div *ngIf="confirmPassword.errors?.['minlength']">*Password should be minimum 8 characters</div>
+                    <div *ngIf="confirmPassword.errors?.['pattern']">*Password should contain atleast one uppercase, one lowercase, one number and one special character</div>
+                    <div *ngIf="!passwordMatch">*Password and Confirm Password should be same</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <div class="col-md-12">
+                  <label for="studentName" class="form-label">Confirm Password</label>
+                  <input type="text"  formControlName="studentName" class="form-control" id="studentName" [value]="studentName"  name="studentName" >
+                  <div id="studentNameAlert" class="custom-alert"></div>
+                </div>
+              </div>
+
+            </div>
+
+<!--            <div class="row" style="margin-top: 2rem;">-->
+<!--              <div class="col-sm">-->
+<!--                <div class="col-md-12">-->
+<!--                  <div class="mb-3 iconinput input-effect">-->
+<!--                    <input type="tel" class="form-control effect-16" formControlName="mobile" autocomplete="off" [ngClass]="{'is-invalid': submitted &&  f['mobile'].errors}">-->
+<!--                    <i class="hricon-mobile"></i>-->
+<!--                    <label>Mobile</label>-->
+<!--                    <span class="focus-border"></span>-->
+<!--                    <div class="info-tooltip invalid-feedback" (mouseover)="changeText=true" (mouseout)="changeText=false"></div>-->
+<!--                    <div class="info-tooltipcontent" *ngIf="changeText">Please enter valid mobile no.</div>-->
+<!--                  </div>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+
+
+          </div>
+
+          <div style="margin-top: 2rem;" class="container">
+
+            <div class="row buttonClass">
+
+              <div class="col-sm">
+                <div class="col-md-12 text-center">
+                  <div *ngIf="updateStudent">
+                    <button id="btnUpdate" class="btn btn-primary" type="submit">Update</button>
+                  </div>
+                  <button id="btnSubmit" class="btn btn-primary" type="submit">Submit</button>
+                  <!--                  [disabled]="studentFormGroup.invalid"-->
+                  <button id="btnReset" class="btn btn-warning" type="reset" style="margin-left: 1rem">Reset</button>
+                  <button id="getTaggedHospital" class="btn btn-secondary" type="button" style="margin-left: 1rem" (click)="getTaggedHospital()">Get Tagged Hospital</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    <h5>By : Sambit Kumar Pradhan</h5>
+  </div>
+
+</div>
+</body>
+</html>
+

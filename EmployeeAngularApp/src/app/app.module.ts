@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { StudentComponent } from './student/student.component';
+import { StudentComponent } from './components/student/student.component';
 import { ValidationComponent } from './validation/validation.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ValidationComponent } from './validation/validation.component';
     CreateEmployeeComponent,
     StudentComponent,
     ValidationComponent,
+    TestComponent,
   ],
     imports: [
         BrowserModule,
